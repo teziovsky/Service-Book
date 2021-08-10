@@ -17,68 +17,68 @@
               <v-row>
                 <v-col cols="12">
                   <v-text-field
-                      v-model.lazy="title"
-                      :error="$v.title.$dirty && $v.title.$invalid"
-                      :rules="[rules.required, rules.title]"
-                      label="Title of service*"
-                      required
-                      @input="$v.title.$touch()"
+                    v-model.lazy="title"
+                    :error="$v.title.$dirty && $v.title.$invalid"
+                    :rules="[rules.required, rules.title]"
+                    label="Title of service*"
+                    required
+                    @input="$v.title.$touch()"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12">
                   <v-text-field
-                      v-model.lazy="description"
-                      label="Description of service"
+                    v-model.lazy="description"
+                    label="Description of service"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4" sm="4">
                   <v-text-field
-                      v-model.lazy="price"
-                      :error="$v.price.$dirty && $v.price.$invalid"
-                      :rules="[rules.required]"
-                      label="Price*"
-                      required
-                      type="number"
-                      @input="$v.price.$touch()"
+                    v-model.lazy="price"
+                    :error="$v.price.$dirty && $v.price.$invalid"
+                    :rules="[rules.required]"
+                    label="Price*"
+                    required
+                    type="number"
+                    @input="$v.price.$touch()"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4" sm="4">
                   <v-dialog
-                      ref="dialog"
-                      :return-value.sync="date"
-                      transition="scale-transition"
-                      width="290px"
+                    ref="dialog"
+                    :return-value.sync="date"
+                    transition="scale-transition"
+                    width="290px"
                   >
                     <template v-slot:activator="{ on }">
                       <v-text-field
-                          v-model="date"
-                          v-on="on"
-                          :error="$v.date.$dirty && $v.date.$invalid"
-                          :rules="[rules.required]"
-                          label="Date"
-                          readonly
-                          @input="$v.date.$touch()"
+                        v-model="date"
+                        v-on="on"
+                        :error="$v.date.$dirty && $v.date.$invalid"
+                        :rules="[rules.required]"
+                        label="Date"
+                        readonly
+                        @input="$v.date.$touch()"
                       ></v-text-field>
                     </template>
                     <v-date-picker
-                        v-model="date"
-                        :max="getCurrentDate"
-                        no-title
-                        scrollable
-                        value="12-09-2020"
-                        @input="$refs.dialog.save(date)"
+                      v-model="date"
+                      :max="getCurrentDate"
+                      no-title
+                      scrollable
+                      value="12-09-2020"
+                      @input="$refs.dialog.save(date)"
                     ></v-date-picker>
                   </v-dialog>
                 </v-col>
                 <v-col cols="12" md="4" sm="4">
                   <v-text-field
-                      v-model.lazy="mileage"
-                      :error="$v.mileage.$dirty && $v.mileage.$invalid"
-                      :rules="[rules.required]"
-                      label="Mileage*"
-                      required
-                      type="number"
-                      @input="$v.mileage.$touch()"
+                    v-model.lazy="mileage"
+                    :error="$v.mileage.$dirty && $v.mileage.$invalid"
+                    :rules="[rules.required]"
+                    label="Mileage*"
+                    required
+                    type="number"
+                    @input="$v.mileage.$touch()"
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -88,11 +88,11 @@
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn
-                :disabled="$v.$invalid"
-                center
-                color="blue darken-1"
-                outlined
-                @click="addService"
+              :disabled="$v.$invalid"
+              center
+              color="blue darken-1"
+              outlined
+              @click="addService"
             >
               Add service
             </v-btn>
@@ -107,18 +107,18 @@
     <div v-else>
       <transition mode="out-in" name="fade-alert">
         <transition-group
-            v-if="services.length"
-            appear
-            class="container--fluid"
-            mode="out-in"
-            name="fade"
-            tag="div"
+          v-if="services.length"
+          appear
+          class="container--fluid"
+          mode="out-in"
+          name="fade"
+          tag="div"
         >
           <Service
-              v-for="(service, index) in services"
-              :key="index"
-              :index="index"
-              :service="service"
+            v-for="(service, index) in services"
+            :key="index"
+            :index="index"
+            :service="service"
           />
         </transition-group>
         <v-alert v-else key="nodata" class="mt-2" type="warning">
@@ -133,7 +133,7 @@
 <script>
 import Service from './Service';
 import { validationMixin } from 'vuelidate';
-import { required, minLength } from 'vuelidate/lib/validators';
+import { minLength, required } from 'vuelidate/lib/validators';
 import { mapGetters } from 'vuex';
 
 export default {
@@ -168,11 +168,10 @@ export default {
       this.mileage = null;
     },
     formatString(value) {
-      var newValue = value.replace(/_/g, ' ').toUpperCase();
-      return newValue;
+      return value.replace(/_/g, ' ').toUpperCase();
     },
     addService: function () {
-      let newService = [
+      const newService = [
         {
           title: this.title,
           description: this.description,
