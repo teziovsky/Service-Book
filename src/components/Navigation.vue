@@ -2,18 +2,18 @@
   <nav>
     <v-navigation-drawer v-model="drawer" absolute app bottom>
       <transition-group
-          appear
-          class="v-list v-sheet v-sheet---tile theme--light v-list--dense"
-          mode="out-in"
-          name="fade-adv"
-          tag="div"
+        appear
+        class="v-list v-sheet v-sheet---tile theme--light v-list--dense"
+        mode="out-in"
+        name="fade-adv"
+        tag="div"
       >
         <v-list-item
-            v-for="(car, index) in cars"
-            :key="index"
-            :index="index"
-            link
-            @click.prevent="updateActualCar(index)"
+          v-for="(car, index) in cars"
+          :key="index"
+          :index="index"
+          link
+          @click.prevent="updateActualCar(index)"
         >
           <v-list-item-action>
             <transition mode="out-in" name="fade">
@@ -29,26 +29,26 @@
         </v-list-item>
         <v-list-item v-if="editmode" key="input">
           <v-text-field
-              id="newCarInput"
-              v-model="newCarName"
-              :rules="[newCarRules.required, newCarRules.exist]"
-              append-icon="mdi-plus"
-              class="mt-1"
-              dense
-              placeholder="Name of new car"
-              solo
-              @keyup.enter.native="addCar(reversedFormatString(newCarName))"
-              @click:append="addCar(reversedFormatString(newCarName))"
+            id="newCarInput"
+            v-model="newCarName"
+            :rules="[newCarRules.required, newCarRules.exist]"
+            append-icon="mdi-plus"
+            class="mt-1"
+            dense
+            placeholder="Name of new car"
+            solo
+            @keyup.enter.native="addCar(reversedFormatString(newCarName))"
+            @click:append="addCar(reversedFormatString(newCarName))"
           ></v-text-field>
         </v-list-item>
         <v-list-item key="editmode" class="d-flex flex-column justify-center">
           <v-btn
-              v-if="!editmode"
-              class="mt-3"
-              color="primary"
-              small
-              tile
-              @click.prevent="editmode = !editmode"
+            v-if="!editmode"
+            class="mt-3"
+            color="primary"
+            small
+            tile
+            @click.prevent="editmode = !editmode"
           >
             Manage Cars
           </v-btn>
@@ -75,7 +75,7 @@ export default {
       newCarRules: {
         required: (v) => !!v || 'Name is required',
         exist: (v) =>
-            !this.cars.includes(this.reversedFormatString(v)) || 'This car already exists',
+          !this.cars.includes(this.reversedFormatString(v)) || 'This car already exists',
       },
     };
   },
@@ -84,16 +84,10 @@ export default {
   },
   methods: {
     formatString(value) {
-      return value
-          .split('_')
-          .join(' ')
-          .toUpperCase();
+      return value.split('_').join(' ').toUpperCase();
     },
     reversedFormatString(value) {
-      return value
-          .split(' ')
-          .join('_')
-          .toLowerCase();
+      return value.split(' ').join('_').toLowerCase();
     },
     updateActualCar(index) {
       this.$store.commit('setActualCar', index);

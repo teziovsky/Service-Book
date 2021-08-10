@@ -2,7 +2,7 @@
   <v-expansion-panels class="index-0">
     <v-expansion-panel class="my-1">
       <v-expansion-panel-header>
-        <v-row class="d-flex justify-content-around align-center breakword" no-gutters>
+        <v-row class="d-flex justify-content-around align-center break-word" no-gutters>
           <v-col class="pr-5">
             <div class="caption grey--text">Title</div>
             <div>{{ service.title }}</div>
@@ -10,7 +10,7 @@
 
           <v-col class="d-none d-md-block" style="max-width: 85px">
             <div class="caption grey--text">Price</div>
-            <div>{{ formattedNumber(service.price) }} zł</div>
+            <div>{{ service.price | formattedNumber }} zł</div>
           </v-col>
           <v-col class="d-none d-md-block" style="max-width: 110px">
             <div class="caption grey--text">Date</div>
@@ -18,7 +18,7 @@
           </v-col>
           <v-col class="d-none d-md-block" style="max-width: 110px">
             <div class="caption grey--text">Mileage</div>
-            <div>{{ formattedNumber(service.mileage) }} km</div>
+            <div>{{ service.mileage | formattedNumber }} km</div>
           </v-col>
           <v-col align-self="center" style="max-width: 75px">
             <v-btn color="error" dark small @click.stop="deleteService(index)">DELETE</v-btn>
@@ -30,7 +30,7 @@
         <v-row class="justify-space-between d-flex d-md-none pb-2" no-gutters>
           <v-col style="max-width: 85px">
             <div class="caption grey--text">Price</div>
-            <div>{{ formattedNumber(service.price) }} zł</div>
+            <div>{{ service.price | formattedNumber }} zł</div>
           </v-col>
           <v-col style="max-width: 110px">
             <div class="caption grey--text">Date</div>
@@ -38,15 +38,15 @@
           </v-col>
           <v-col style="max-width: 110px">
             <div class="caption grey--text">Mileage</div>
-            <div>{{ formattedNumber(service.mileage) }} km</div>
+            <div>{{ service.mileage | formattedNumber }} km</div>
           </v-col>
         </v-row>
-        <v-row class="breakword" no-gutters>
+        <v-row class="break-word" no-gutters>
           <v-col cols="12">
             <div class="caption grey--text">Description</div>
             <div
-                v-if="service.description.length === 0"
-                class="font-italic caption font-weight-light"
+              v-if="service.description.length === 0"
+              class="font-italic caption font-weight-light"
             >
               Brak opisu
             </div>
@@ -65,19 +65,20 @@ export default {
   name: 'Service',
   props: ['service', 'index'],
   methods: {
-    formattedNumber(value) {
-      value = new Intl.NumberFormat().format(value);
-      return value;
-    },
     deleteService(id) {
       this.$store.dispatch('removeService', id);
+    },
+  },
+  filters: {
+    formattedNumber(value) {
+      return new Intl.NumberFormat().format(value);
     },
   },
 };
 </script>
 
 <style lang="scss">
-.breakword {
+.break-word {
   word-break: break-word;
 }
 
