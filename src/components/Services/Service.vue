@@ -7,7 +7,6 @@
             <div class="caption grey--text">Title</div>
             <div>{{ service.title }}</div>
           </v-col>
-
           <v-col class="d-none d-md-block" style="max-width: 85px">
             <div class="caption grey--text">Price</div>
             <div>{{ service.price | formattedNumber }} zł</div>
