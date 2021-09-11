@@ -1,35 +1,29 @@
-<h1 align="center">Welcome to service-book 👋</h1>
-<p>
-  <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000" />
-  <a href="https://github.com/teziovsky/service-book#readme" target="_blank">
-    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
-  </a>
-</p>
+# Hey it's car-service-book! 🤝
 
-> The service book app writed in Vue.js. Using vuetify and vuex store..
+> The service book app wrote in Vue.js. Using vuetify and vuex store.
 
-### ✨ [Demo](https://teziovsky.github.io/service-book/)
+## [Demo](https://teziovsky.github.io/car-service-book/)
 
-## Install
+## Run locally
 
-```sh
+Clone the project and go to the project directory
+
+```bash
+git clone https://github.com/teziovsky/car-service-book.git && cd car-service-book
+```
+
+Install dependencies
+
+```bash
 npm install
 ```
 
-## Usage
+Start the server
 
-```sh
+```bash
 npm run serve
 ```
 
-## Author
+## Contact
 
-👤 **Jakub Soboczyński**
-
-- Website: https://jakubsoboczynski.pl/
-- Github: [@teziovsky](https://github.com/teziovsky)
-- LinkedIn: [@jakubsoboczynski](https://linkedin.com/in/jakubsoboczynski)
-
-## Show your support
-
-Give a ⭐️ if this project helped you!
+If you have any suggestions, please [send me an email here](mailto:kontakt@jakubsoboczynski.pl) 🔥

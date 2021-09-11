@@ -1,5 +1,5 @@
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production' ? '/service-book/' : '/',
+  publicPath: process.env.NODE_ENV === 'production' ? '/car-service-book/' : '/',
   transpileDependencies: ['vuetify'],
   lintOnSave: true,
 };
