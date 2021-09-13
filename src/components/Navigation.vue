@@ -10,24 +10,24 @@
       >
         <v-list-item
           v-for="(car, index) in cars"
-          :key="index"
+          :key="car.id"
           :index="index"
           link
-          @click.prevent="updateActualCar(index)"
+          @click.prevent="updateActualCar(car.name)"
         >
           <v-list-item-action>
             <transition mode="out-in" name="fade">
-              <v-icon v-if="editmode" key="delete" color="red" @click.stop="deleteCar(car, index)">
+              <v-icon v-if="editMode" key="delete" color="red" @click.stop="deleteCar(car.id)">
                 mdi-delete
               </v-icon>
               <v-icon v-else key="car" color="indigo">mdi-car</v-icon>
             </transition>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>{{ formatString(car) }}</v-list-item-title>
+            <v-list-item-title>{{ formatString(car.name) }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item v-if="editmode" key="input">
+        <v-list-item v-if="editMode" key="input">
           <v-text-field
             id="newCarInput"
             v-model="newCarName"
@@ -41,14 +41,14 @@
             @click:append="addCar(reversedFormatString(newCarName))"
           ></v-text-field>
         </v-list-item>
-        <v-list-item key="editmode" class="d-flex flex-column justify-center">
+        <v-list-item key="editMode" class="d-flex flex-column justify-center">
           <v-btn
-            v-if="!editmode"
+            v-if="!editMode"
             class="mt-3"
             color="primary"
             small
             tile
-            @click.prevent="editmode = !editmode"
+            @click.prevent="editMode = !editMode"
           >
             Manage Cars
           </v-btn>
@@ -70,7 +70,7 @@ export default {
   data() {
     return {
       drawer: false,
-      editmode: false,
+      editMode: false,
       newCarName: '',
       newCarRules: {
         required: (v) => !!v || 'Name is required',
@@ -89,17 +89,12 @@ export default {
     reversedFormatString(value) {
       return value.split(' ').join('_').toLowerCase();
     },
-    updateActualCar(index) {
-      this.$store.commit('setActualCar', index);
-      this.editmode = false;
+    updateActualCar(carName) {
+      this.$store.commit('setActualCar', carName);
+      this.editMode = false;
     },
-    deleteCar(carName, index) {
-      this.$store.dispatch('removeCar', carName, index);
-      if (index === 0) {
-        this.$store.commit('setActualCar', index);
-      } else {
-        this.$store.commit('setActualCar', index - 1);
-      }
+    deleteCar(car_id) {
+      this.$store.dispatch('removeCar', car_id);
     },
     addCar(newCarName) {
       if (this.cars.includes(this.reversedFormatString(newCarName))) {
@@ -109,7 +104,7 @@ export default {
       } else {
         this.$store.dispatch('addCar', newCarName);
         this.newCarName = '';
-        this.editmode = false;
+        this.editMode = false;
       }
     },
   },

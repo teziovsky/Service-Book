@@ -1,7 +1,7 @@
 <template>
-  <div class="serviceslist">
+  <div class="servicesList">
     <div v-if="this.cars.length" class="text-center d-flex align-baseline">
-      <v-subheader class="order-first">{{ formatString(actualcarname) }}</v-subheader>
+      <v-subheader class="order-first">{{ formatString(actualCarName) }}</v-subheader>
       <v-dialog v-model="dialog" max-width="600px" persistent>
         <template v-slot:activator="{ on }">
           <v-btn v-on="on" absolute color="primary" dark right>Add service</v-btn>
@@ -116,7 +116,7 @@
         >
           <Service
             v-for="(service, index) in services"
-            :key="index"
+            :key="service.id"
             :index="index"
             :service="service"
           />
@@ -154,7 +154,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['services', 'cars', 'actualcarname']),
+    ...mapGetters(['services', 'cars', 'actualCarName']),
     getCurrentDate() {
       return new Date().toJSON().slice(0, 10);
     },
