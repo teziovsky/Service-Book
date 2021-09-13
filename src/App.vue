@@ -1,11 +1,11 @@
 <template>
   <v-app>
     <Navigation></Navigation>
-    <v-content class="grey lighten-4">
+    <v-main class="grey lighten-4">
       <v-container fluid>
-        <router-view></router-view>
+        <ServicesList />
       </v-container>
-    </v-content>
+    </v-main>
     <Credits />
   </v-app>
 </template>
@@ -13,12 +13,14 @@
 <script>
 import Navigation from './components/Navigation';
 import Credits from './components/Credits';
+import ServicesList from '@/components/Services/ServicesList.vue';
 
 export default {
   name: 'App',
   components: {
     Navigation,
     Credits,
+    ServicesList,
   },
 };
 </script>

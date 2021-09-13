@@ -1,8 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import VueRouter from 'vue-router';
 
-Vue.use(VueRouter);
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -11,20 +9,19 @@ export default new Vuex.Store({
       honda_civic_viii: [
         {
           id: 1,
-          title: 'Kupno samochodu Honda Civic VIII 1.8 iVTEC 2009r.',
-          description:
-            'W skład ceny wchodzi: transport samochodu z niemiec, akcyza, przegląd, tłumaczenie dokumentów oraz rejestracja.',
-          price: 24300,
-          date: '08.06.2020',
-          mileage: 149500,
+          title: 'Kupno samochodu Honda Civic X 1.5 VTEC Turbo 2019r.',
+          description: 'W skład ceny wchodzi wykonanie tzw. przeglądu 0.',
+          price: 72900,
+          date: '01.06.2021',
+          mileage: 43500,
         },
         {
           id: 2,
           title: 'Spawanie uchwytu prawego tłumika',
           description: 'Również dolano 200 ml oleju silnikowego.',
           price: 50,
-          date: '21.07.2020',
-          mileage: 150000,
+          date: '21.07.2021',
+          mileage: 44000,
         },
       ],
       opel_astra_j: [
@@ -48,13 +45,26 @@ export default new Vuex.Store({
         },
       ],
     },
-    cars: ['honda_civic_viii', 'opel_astra_j', 'bmw_320i'],
-    actualcarname: 'honda_civic_viii',
+    cars: [
+      {
+        id: 1,
+        name: 'honda_civic_viii',
+      },
+      {
+        id: 2,
+        name: 'opel_astra_j',
+      },
+      {
+        id: 3,
+        name: 'bmw_320i',
+      },
+    ],
+    actualCarName: 'honda_civic_viii',
   },
   getters: {
-    services: (state) => state.services[state.actualcarname].sort((a, b) => b.mileage - a.mileage),
+    services: (state) => state.services[state.actualCarName].sort((a, b) => b.mileage - a.mileage),
     cars: (state) => state.cars,
-    actualcarname: (state) => state.actualcarname,
+    actualCarName: (state) => state.actualCarName,
   },
   actions: {
     addService({ commit }, service) {
@@ -66,8 +76,8 @@ export default new Vuex.Store({
     fetchCarNames({ commit }) {
       commit('setCarNames');
     },
-    removeCar({ commit }, carName) {
-      commit('handleRemoveCar', carName);
+    removeCar({ commit }, car_id) {
+      commit('handleRemoveCar', car_id);
 
       if (this.state.cars.length < 1) commit('emptyCarArray');
     },
@@ -76,18 +86,25 @@ export default new Vuex.Store({
     },
   },
   mutations: {
-    handleAddService: (state, service) => state.services[state.actualcarname].push(service),
-    handleRemoveService: (state, id) => state.services[state.actualcarname].splice(id, 1),
-    setActualCar: (state, actualcar) => (state.actualcarname = state.cars[actualcar]),
+    handleAddService: (state, service) => {
+      const last_id = state.services[state.actualCarName].reduce((max, character) => (character.id > max ? character.id : max), state.services[state.actualCarName][0].id);
+      const data = {
+        id: last_id + 1,
+        ...service,
+      };
+      state.services[state.actualCarName].push(data);
+    },
+    handleRemoveService: (state, id) => state.services[state.actualCarName].splice(id, 1),
+    setActualCar: (state, actualCar) => state.actualCarName = actualCar,
     handleAddCar: (state, newCarName) => {
-      state.cars.push(newCarName);
+      const last_id = state.cars.reduce((max, character) => (character.id > max ? character.id : max), state.cars[0].id);
+      state.cars.push({ id: last_id + 1, name: newCarName });
       state.services[newCarName] = [];
     },
-    handleRemoveCar: (state, carName) => {
-      state.cars.splice(state.cars.indexOf(carName), 1);
-      delete state.services[carName];
+    handleRemoveCar: (state, car_id) => {
+      state.cars = state.cars.filter(item => item.id !== car_id);
     },
 
-    emptyCarArray: (state) => (state.actualcarname = ' '),
+    emptyCarArray: (state) => (state.actualCarName = ' '),
   },
 });
