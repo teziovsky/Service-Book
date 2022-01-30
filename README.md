@@ -1,6 +1,6 @@
 # Hey it's car-service-book! 🤝
 
-> The service book app wrote in Vue.js. Using vuetify and vuex store.
+> Online vehicle service book. It allows you to save the service history with a description, date and current mileage for various cars added to the database.
 
 ## [Demo](https://teziovsky.github.io/car-service-book/)
 
