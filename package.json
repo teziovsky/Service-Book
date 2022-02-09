@@ -1,6 +1,26 @@
 {
   "name": "car-service-book",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "description": "Online vehicle service book. It allows you to save the service history with a description, date and current mileage for various cars added to the database.",
+  "homepage": "https://teziovsky.github.io/car-service-book/",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:teziovsky/car-service-book.git"
+  },
+  "engines": {
+    "node": ">=v12.0.0",
+    "npm": ">=v6.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/teziovsky/car-service-book/issues",
+    "email": "teziovsky@gmail.com"
+  },
+  "license": "MIT License",
+  "author": {
+    "name": "Jakub Soboczyński",
+    "email": "jakub.soboczynski@icloud.com",
+    "url": "https://www.jakubsoboczynski.pl"
+  },
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
