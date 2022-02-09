@@ -24,7 +24,7 @@ Install dependencies
 Start the application!
 
 ```bash
-  npm run start
+  npm run serve
 ```
 
 ## Author 🙎🏼‍
