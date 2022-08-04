@@ -1,18 +1,18 @@
-# Hey it's car-service-book! 🖖🏼
+# Hey it's car-service-book-old! 🖖🏼
 
-![GitHub package.json version](https://img.shields.io/github/package-json/v/teziovsky/car-service-book) [![GitHub](https://img.shields.io/github/license/teziovsky/car-service-book)](https://choosealicense.com/licenses/mit/) [![Twitter Follow](https://img.shields.io/twitter/follow/teziovsky?style=social)](https://www.twitter.com/teziovsky)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/teziovsky/car-service-book-old) [![GitHub](https://img.shields.io/github/license/teziovsky/car-service-book-old)](https://choosealicense.com/licenses/mit/) [![Twitter Follow](https://img.shields.io/twitter/follow/teziovsky?style=social)](https://www.twitter.com/teziovsky)
 
 > Online vehicle service book. It allows you to save the service history with a description, date and current mileage for various cars added to the database.
 
 ## Demo 👀
-#### [🏠 Link to demo here!](https://teziovsky.github.io/car-service-book/)
+#### [🏠 Link to demo here!](https://teziovsky.github.io/car-service-book-old/)
 
 ## Get started 🏁
 
 Clone the project and go to the project directory
 
 ```bash
-  git clone git@github.com:teziovsky/car-service-book.git && cd car-service-book
+  git clone git@github.com:teziovsky/car-service-book-old.git && cd car-service-book-old
 ```
 
 Install dependencies
