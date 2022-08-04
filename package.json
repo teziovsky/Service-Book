@@ -1,18 +1,18 @@
 {
-  "name": "car-service-book",
+  "name": "car-service-book-old",
   "version": "1.0.0",
   "description": "Online vehicle service book. It allows you to save the service history with a description, date and current mileage for various cars added to the database.",
-  "homepage": "https://teziovsky.github.io/car-service-book/",
+  "homepage": "https://teziovsky.github.io/car-service-book-old/",
   "repository": {
     "type": "git",
-    "url": "git@github.com:teziovsky/car-service-book.git"
+    "url": "git@github.com:teziovsky/car-service-book-old.git"
   },
   "engines": {
     "node": ">=v12.0.0",
     "npm": ">=v6.0.0"
   },
   "bugs": {
-    "url": "https://github.com/teziovsky/car-service-book/issues",
+    "url": "https://github.com/teziovsky/car-service-book-old/issues",
     "email": "teziovsky@gmail.com"
   },
   "license": "MIT License",
