@@ -2,7 +2,7 @@
 
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/teziovsky/car-service-book-v1) [![GitHub](https://img.shields.io/github/license/teziovsky/car-service-book-v1)](https://choosealicense.com/licenses/mit/) [![Twitter Follow](https://img.shields.io/twitter/follow/teziovsky?style=social)](https://www.twitter.com/teziovsky)
 
-> Online vehicle service book. It allows you to save the service history with a description, date and current mileage for various cars added to the database.
+> Online vehicle service book. It allows you to save the service history with a description, date and current mileage for various added cars.
 
 ## Demo 👀
 #### [🏠 Link to demo here!](https://teziovsky.github.io/car-service-book-v1/)
